@@ -1,0 +1,26 @@
+<script>
+  async function fetchDashboardData() {
+    try {
+      // Use a relative URL for Vercel deployment
+      const response = await fetch('/api/dashboard-data');
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+
+      // Update the HTML elements with the fetched data
+      document.getElementById('bots-count').textContent = data.botsCount;
+      document.getElementById('launch-status').textContent = data.launchStatus;
+      const fundingPercent = (data.fundingProgress / data.targetFunding) * 100;
+      document.getElementById('funding-bar').style.width = `${fundingPercent.toFixed(2)}%`;
+      document.getElementById('funding-percent').textContent = `${fundingPercent.toFixed(2)}%`;
+
+    } catch (error) {
+      console.error('Could not fetch dashboard data:', error);
+    }
+  }
+
+  // Initial data fetch and refresh interval
+  fetchDashboardData();
+  setInterval(fetchDashboardData, 10000);
+</script>
