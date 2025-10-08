@@ -1,0 +1,1 @@
+// License encryption script
