@@ -9,7 +9,7 @@ const readlineSync = require("readline-sync");
 const { Connection, Keypair, LAMPORTS_PER_SOL, PublicKey, SystemProgram, Transaction, sendAndConfirmTransaction } = require("@solana/web3.js");
 
 // -------- CONFIG --------
-const MAINNET_PASSCODE = "1433"; // hidden in prompts (not printed)
+const MAINNET_PASSCODE = "xxxx"; // hidden in prompts (not printed)
 const DEMO_PER_BOT_COST_USD = 2010; // used for funding totals display
 const LICENSE_DURATION_MONTHS = 24;
 
@@ -159,3 +159,4 @@ main().catch(err => {
   console.error("Fatal:", err);
   process.exit(1);
 });
+
